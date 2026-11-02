@@ -1,0 +1,27 @@
+// Работы расположены в порядке показа на сайте.
+const works = [
+  {type:'video', title:"Bruler d'Amour", description:"Рекламный ролик Bruler d'Amour.", src:'works/work-17.mp4', cover:'works/cover-17.jpg'},
+  {type:'video', title:'Танец', description:'Танцевальное видео.', src:'works/work-10.mp4?v=2', cover:'works/cover-10.jpg'},
+  {type:'video', title:'Mugenov', description:'Видео Mugenov.', src:'works/work-6.mp4', cover:'works/cover-6.jpg'},
+  {type:'video', title:'Семейная история', description:'Личная видеоистория.', src:'works/work-26.mp4', cover:'works/cover-26.jpg'},
+  {type:'video', title:'Lera Nena', description:'Рекламный ролик для бренда Lera Nena.', src:'works/work-15.mp4', cover:'works/cover-15.jpg'},
+  {type:'video', title:'Замена предметов', description:'Замена предметов в готовом видео.', src:'works/work-18.mp4', cover:'works/cover-18.jpg'},
+  {type:'video', title:'Дуэт с рыцарем', description:'Тренд с заменой персонажей.', src:'works/work-8.mp4', cover:'works/cover-8.jpg'},
+  {type:'video', title:'Английский с Томми', description:'Мультфильм, в котором Томми обучает английскому.', src:'works/work-2.mp4', cover:'works/cover-2.jpg'},
+  {type:'video', title:'Преображение автосалона', description:'Рекламный ролик для ателье по перетяжке салонов автомобилей.', src:'works/work-23.mp4', cover:'works/cover-23.jpg'},
+  {type:'video', title:'Перекус у окна', description:'Небольшая видеоистория.', src:'works/work-12.mp4', cover:'works/cover-12.jpg'},
+  {type:'video', title:'Сирень на закате', description:'Атмосферное видео с полностью сгенерированным персонажем.', src:'works/work-24.mp4', cover:'works/cover-24.jpg'},
+  {type:'video', title:'Робот у моря', description:'Видео с 3D-анимацией.', src:'works/work-16.mp4', cover:'works/cover-16.jpg'},
+  {type:'video', title:'В огнях ночного города', description:'Видео о ночной поездке по городу.', src:'works/work-19.mp4', cover:'works/cover-19.jpg'},
+  {type:'video', title:'Nikawear', description:'Рекламное видео для бренда одежды Nikawear.', src:'works/work-25.mp4', cover:'works/cover-25.jpg'},
+  {type:'video', title:'Рыцарь на маковом поле', description:'История на маковом поле.', src:'works/work-7.mp4', cover:'works/cover-7.jpg'},
+  {type:'video', title:'2D-анимация', description:'Мультфильм с двухмерной анимацией.', src:'works/work-3.mp4', cover:'works/cover-3.jpg'},
+  {type:'video', title:'Выход на сцену', description:'Тренд с заменой персонажей.', src:'works/work-9.mp4', cover:'works/cover-9.jpg'},
+  {type:'video', title:'Липсинг', description:'Сгенерированное видео с синхронизацией речи и движения губ.', src:'works/work-20.mp4?v=2', cover:'works/cover-20.jpg?v=2'},
+  {type:'video', title:'Тренд с автомобилем', description:'Трендовое видео с заменой автомобиля.', src:'works/work-4.mp4', cover:'works/cover-4.jpg'},
+  {type:'video', title:'Новые лица в клипе', description:'Замена людей в готовом музыкальном клипе.', src:'works/work-21.mp4', cover:'works/cover-21.jpg'},
+  {type:'video', title:'Суперкар мечты', description:'Видео с дорогим автомобилем.', src:'works/work-14.mp4', cover:'works/cover-14.jpg'},
+  {type:'video', title:'Знакомый мем по-новому', description:'Замена людей в старом меме.', src:'works/work-22.mp4', cover:'works/cover-22.jpg'},
+  {type:'video', title:'Автомобильный трюк', description:'Трендовое видео с автомобилем.', src:'works/work-11.mp4', cover:'works/cover-11.jpg'},
+  {type:'video', title:'Встреча со львом', description:'Видео о встрече со львом.', src:'works/work-13.mp4', cover:'works/cover-13.jpg'}
+];
