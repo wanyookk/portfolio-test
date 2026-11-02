@@ -2,16 +2,9 @@ const board = document.querySelector('#board');
 const modal = document.querySelector('#modal');
 const content = document.querySelector('#modal-content');
 let filter = 'all';
-let videoUrl = null;
-let currentLoad = null;
-
 function clearWork() {
-  if (currentLoad) currentLoad.abort();
-  currentLoad = null;
   const video = content.querySelector('video');
   if (video) { video.pause(); video.removeAttribute('src'); video.load(); }
-  if (videoUrl) URL.revokeObjectURL(videoUrl);
-  videoUrl = null;
   content.replaceChildren();
 }
 
@@ -20,6 +13,8 @@ function showWork(w) {
   const showreel = document.querySelector('.showreel-video');
   if (showreel && !showreel.paused) showreel.pause();
   const label = document.createElement('span');
+  let videoToPlay = null;
+  let videoStatus = null;
   label.textContent = w.type === 'photo' ? 'ФОТО' : 'ВИДЕО';
   content.append(label);
   if (w.src) {
@@ -29,6 +24,7 @@ function showWork(w) {
       media.setAttribute('controlsList', 'nodownload');
       media.addEventListener('contextmenu', event => event.preventDefault());
       media.playsInline = true;
+      media.setAttribute('playsinline', '');
       media.preload = 'metadata';
       if (w.cover) media.poster = w.cover;
     } else { media.src = w.src; media.alt = w.title; }
@@ -39,25 +35,19 @@ function showWork(w) {
       status.textContent = 'Загружаем видео…';
       status.setAttribute('role', 'status');
       content.append(status);
-      const controller = new AbortController();
-      currentLoad = controller;
-      fetch(w.src, {signal: controller.signal}).then(response => {
-        if (!response.ok) throw new Error('Ошибка загрузки');
-        return response.blob();
-      }).then(blob => {
-        if (controller.signal.aborted) return;
-        videoUrl = URL.createObjectURL(blob);
-        media.src = videoUrl;
+      media.addEventListener('playing', () => {
         status.remove();
-        currentLoad = null;
-        media.play().catch(() => {
-          if (!modal.open || content.querySelector('video') !== media) return;
-          status.textContent = 'Нажмите кнопку воспроизведения, чтобы запустить видео.';
-          content.append(status);
-        });
-      }).catch(error => {
-        if (error.name !== 'AbortError') status.textContent = 'Не удалось загрузить видео. Попробуйте открыть работу ещё раз.';
+        media.removeAttribute('poster');
+      }, {once: true});
+      media.addEventListener('error', () => {
+        if (modal.open && content.querySelector('video') === media) {
+          status.textContent = 'Не удалось загрузить видео. Попробуйте открыть работу ещё раз.';
+          if (!status.isConnected) content.append(status);
+        }
       });
+      media.src = w.src;
+      videoToPlay = media;
+      videoStatus = status;
     }
   } else {
     const blank = document.createElement('div'); blank.className = 'modal-blank';
@@ -67,6 +57,14 @@ function showWork(w) {
   const p = document.createElement('p'); p.textContent = w.description;
   content.append(title, p);
   modal.showModal();
+  if (videoToPlay) {
+    const playback = videoToPlay.play();
+    if (playback) playback.catch(() => {
+      if (!modal.open || content.querySelector('video') !== videoToPlay) return;
+      videoStatus.textContent = 'Нажмите кнопку воспроизведения, чтобы запустить видео.';
+      if (!videoStatus.isConnected) content.append(videoStatus);
+    });
+  }
 }
 
 function render() {
