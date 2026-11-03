@@ -114,7 +114,7 @@
     controls.addEventListener('pointerleave', () => player.classList.remove('hide-after-play'));
     controls.addEventListener('focusin', () => player.classList.remove('hide-after-play'));
     video.addEventListener('pause', () => {
-      clearTimeout(indicatorTimer); indicator.innerHTML = playIcon;
+      clearTimeout(indicatorTimer);
       player.classList.remove('flash-pause','hide-after-play'); player.classList.add('is-paused');
       setControlsVisible(true);
     });
@@ -124,14 +124,21 @@
       setControlsVisible(true);
     });
   }
+  video.addEventListener('pause', () => {
+    clearTimeout(indicatorTimer);
+    player.classList.remove('flash-pause');
+    indicator.innerHTML = pauseIcon;
+    indicatorTimer = setTimeout(() => { if (video.paused) indicator.innerHTML = playIcon; }, 500);
+  });
   video.addEventListener('play', () => {
     playbackStarted = true;
+    clearTimeout(indicatorTimer); indicator.innerHTML = pauseIcon;
+    player.classList.add('flash-pause');
     if (!mobile) {
-      clearTimeout(indicatorTimer); indicator.innerHTML = pauseIcon;
       player.classList.remove('is-paused'); player.classList.add('flash-pause','hide-after-play');
       if (inFullscreen()) setControlsVisible(false);
-      indicatorTimer = setTimeout(() => player.classList.remove('flash-pause'), 600);
     }
+    indicatorTimer = setTimeout(() => player.classList.remove('flash-pause'), 500);
   });
   if (!mobile) document.addEventListener('keydown', event => {
     if (document.querySelector('#modal')?.open) return;

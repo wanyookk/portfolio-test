@@ -84,5 +84,5 @@ header .role{position:absolute;top:34svh;right:5%;font-size:clamp(24px,2.5vw,42p
 .reel-play svg,.playback-indicator svg,.reel-fullscreen svg{display:block;width:1em;height:1em;margin:auto}
 @media (pointer:coarse){
  .playback-indicator{display:grid;position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-50%);place-items:center;width:70px;height:70px;padding-left:3px;border-radius:50%;background:rgba(38,3,8,.56);color:#e7dca4;font-size:28px;opacity:0;pointer-events:none;transition:opacity .18s ease}
- .reel-player.mobile-paused .playback-indicator{opacity:1}
+ .reel-player.mobile-paused .playback-indicator,.reel-player.flash-pause .playback-indicator{opacity:1}
 }
