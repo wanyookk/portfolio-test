@@ -69,10 +69,10 @@ function showWork(w) {
 
 function render() {
   board.replaceChildren();
-  const visible = works.filter(w => filter === 'all' || w.type === filter);
+  const visible = works.filter(w => filter === 'all' || w.categories?.includes(filter));
   if (!visible.length) {
     const empty = document.createElement('p');
-    empty.className = 'works-empty'; empty.textContent = 'Фотографии скоро появятся.';
+    empty.className = 'works-empty'; empty.textContent = 'В этой категории пока нет работ.';
     board.append(empty); return;
   }
   visible.forEach(w => {
@@ -91,7 +91,10 @@ function render() {
 render();
 document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => {
   filter = b.dataset.filter;
-  document.querySelectorAll('[data-filter]').forEach(x => x.classList.toggle('active', x === b));
+  document.querySelectorAll('[data-filter]').forEach(x => {
+    x.classList.toggle('active', x === b);
+    x.setAttribute('aria-pressed', String(x === b));
+  });
   render();
 }));
 document.querySelector('.close').onclick = () => modal.close();
