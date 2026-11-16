@@ -23,5 +23,7 @@ const works = [
   {type:'video', title:'Суперкар мечты', description:'Видео с дорогим автомобилем.', src:'works/work-14.mp4', cover:'works/cover-14.jpg'},
   {type:'video', title:'Знакомый мем по-новому', description:'Замена людей в старом меме.', src:'works/work-22.mp4', cover:'works/cover-22.jpg'},
   {type:'video', title:'Автомобильный трюк', description:'Трендовое видео с автомобилем.', src:'works/work-11.mp4', cover:'works/cover-11.jpg'},
-  {type:'video', title:'Встреча со львом', description:'Видео о встрече со львом.', src:'works/work-13.mp4', cover:'works/cover-13.jpg'}
+  {type:'video', title:'Встреча со львом', description:'Видео о встрече со львом.', src:'works/work-13.mp4', cover:'works/cover-13.jpg'},
+  {type:'video', title:'История агроинженера', description:'Образовательный мультфильм для детей о развитии сельского хозяйства и профессии агроинженера.', src:'works/work-27.mp4', cover:'works/cover-27.jpg'},
+  {type:'video', title:'Новогодние корпоративы в Seazone', description:'Новогодняя видеоафиша для Seazone с приглашением на корпоративы и информацией о бронировании.', src:'works/work-28.mp4', cover:'works/cover-28.jpg'}
 ];
